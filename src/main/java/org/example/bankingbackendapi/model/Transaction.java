@@ -1,10 +1,15 @@
 package org.example.bankingbackendapi.model;
 
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "transactions")
 public class Transaction {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long fromAccountId;
     private Long toAccountId;
@@ -13,6 +18,10 @@ public class Transaction {
     private String description;
     private String status;
     private LocalDateTime createdAt;
+
+    public Transaction() {
+
+    }
 
     public Transaction(
             Long id,
@@ -37,25 +46,25 @@ public class Transaction {
     public Long getId() {
         return id;
     }
-    public Long fromAccountId() {
+    public Long getFromAccountId() {
         return fromAccountId;
     }
-    public Long toAccountId() {
+    public Long getToAccountId() {
         return toAccountId;
     }
-    public BigDecimal amount() {
+    public BigDecimal getAmount() {
         return amount;
     }
-    public String currency() {
+    public String getCurrency() {
         return currency;
     }
-    public String description() {
+    public String getDescription() {
         return description;
     }
-    public String status() {
+    public String getStatus() {
         return status;
     }
-    public LocalDateTime createdAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
