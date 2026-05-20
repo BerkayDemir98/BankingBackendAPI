@@ -1,15 +1,35 @@
 package org.example.bankingbackendapi.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.example.bankingbackendapi.model.Account;
+import org.example.bankingbackendapi.repository.AccountRepository;
+import org.springframework.web.bind.annotation.*;
 
-import java.lang.module.ResolutionException;
+import java.util.List;
+
 
 @RestController
+@RequestMapping("/accounts")
 public class AccountController {
-    @GetMapping("/api/accounts")
-    public String AccountController() {
-        return "Servus";
+
+    private final AccountRepository accountRepository;
+
+    public AccountController(AccountRepository accountRepository) {
+        this.accountRepository = accountRepository;
+    }
+
+    @GetMapping
+    public List<Account> getAccounts()
+    {
+        return accountRepository.findAll();
+    }
+    @PostMapping
+    public Account createAccount(@RequestBody Account account)
+    {
+        return accountRepository.save(account);
+    }
+    @DeleteMapping("/{id}")
+    public void deleteAccount(@PathVariable Long id)
+    {
+        accountRepository.deleteById(id);
     }
 }

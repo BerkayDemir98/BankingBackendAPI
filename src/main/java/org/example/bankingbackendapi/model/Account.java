@@ -1,14 +1,23 @@
 package org.example.bankingbackendapi.model;
 
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 
+@Entity
+@Table(name = "accounts")
 public class Account {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long userId;
     private String iban;
     private BigDecimal balance;
     private String currency;
+
+    public Account() {
+
+    }
 
     public Account(
             Long id,
