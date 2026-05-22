@@ -3,9 +3,12 @@ package org.example.bankingbackendapi.service;
 import lombok.RequiredArgsConstructor;
 import org.example.bankingbackendapi.dto.TransferRequest;
 import org.example.bankingbackendapi.model.Account;
+import org.example.bankingbackendapi.model.Transaction;
 import org.example.bankingbackendapi.repository.AccountRepository;
 import org.example.bankingbackendapi.repository.TransactionRepository;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
@@ -36,6 +39,18 @@ public class TransferService {
 
         accountRepository.save(from);
         accountRepository.save(to);
+
+        Transaction transaction = new Transaction();
+
+        transaction.setFromAccountId(from.getId());
+        transaction.setToAccountId(to.getId());
+        transaction.setAmount(request.amount());
+        transaction.setCurrency("Eur");
+        transaction.setDescription(request.description());
+        transaction.setStatus("Success");
+        transaction.setCreatedAt(LocalDateTime.now());
+
+        transactionRepository.save(transaction);
 
     }
 
