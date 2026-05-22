@@ -27,7 +27,7 @@ public class TransferService {
                 .orElseThrow(()-> new RuntimeException("Receiver account not found"));
 
         if (from.getBalance().compareTo(request.amount()) < 0) {
-            throw new RuntimeException("Not enough balance");
+            throw new RuntimeException("Not enough balance!");
         }
 
         from.setBalance(
