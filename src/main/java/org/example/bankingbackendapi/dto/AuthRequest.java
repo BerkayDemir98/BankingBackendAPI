@@ -1,4 +1,4 @@
 package org.example.bankingbackendapi.dto;
 
-public class AuthController {
+public class AuthRequest {
 }
