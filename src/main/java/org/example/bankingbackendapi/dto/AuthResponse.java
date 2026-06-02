@@ -1,4 +1,5 @@
 package org.example.bankingbackendapi.dto;
 
-public class AuthResponse {
+public record AuthResponse(Long userId, String username, String email, String role){
+
 }

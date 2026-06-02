@@ -1,4 +1,6 @@
 package org.example.bankingbackendapi.dto;
 
-public class RegisterRequest {
+public record RegisterRequest (String username, String email, String password) {
+
 }
+

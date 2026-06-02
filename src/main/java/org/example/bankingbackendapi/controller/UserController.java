@@ -2,7 +2,6 @@ package org.example.bankingbackendapi.controller;
 
 import org.example.bankingbackendapi.model.User;
 import org.example.bankingbackendapi.repository.UserRepository;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
